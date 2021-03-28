@@ -43,12 +43,12 @@ func readFromFile(fileName string) []string {
 func insertRowsToDatabase(rows []string) {
 
 	// Connecting to the database.
-	db, err := sql.Open("mssql", "server=192.168.0.152;Initial Catalog=dbo;user id=ATT_PORTAL_DEV; password=Att_portal_dev@123; database=ATT_PORTAL_DEV; port=1433")
+	db, err := sql.Open("mssql", "server=localhost;Initial Catalog=dbo;user id=sa; password=sa@123; database=master; port=1433")
 	if err != nil {
 		log.Print("Unable to connect DB, Getting the error: ")
 		log.Fatal(err)
 	}
-	stmt, err := db.Prepare("INSERT INTO dbo.Customer values(?,?,?,?,?,?,?,?,?,?)")
+	stmt, err := db.Prepare("INSERT INTO dbo.Customer VALUES(?,?,?,?,?,?,?,?,?,?)")
 	if err != nil {
 		log.Fatal(err)
 	}
